@@ -14,7 +14,7 @@ export default function CreatePage() {
     e.preventDefault();
     const formData = { id, name, video_url };
 
-    fetch("https://charming-bat-wig.cyclic.app/videos", {
+    fetch("https://json-server-vercel-taupe-two.vercel.app/videos", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(formData),

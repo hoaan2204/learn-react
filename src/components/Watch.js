@@ -10,8 +10,8 @@ export default function Watch() {
   const [video, setVideo] = useState({});
   const [datas, setDatas] = useState([]);
 
-  const playingAPI = `https://charming-bat-wig.cyclic.app/videos/${videoId}`;
-  const resourceAPI = `https://charming-bat-wig.cyclic.app/videos`;
+  const playingAPI = `https://json-server-vercel-taupe-two.vercel.app/videos/${videoId}`;
+  const resourceAPI = `https://json-server-vercel-taupe-two.vercel.app/videos`;
 
   useEffect(() => {
     fetch(playingAPI)
