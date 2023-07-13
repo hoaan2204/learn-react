@@ -7,7 +7,7 @@ export default function searchBar() {
 
   const [datas, setDatas] = useState([]);
 
-  const resourceAPI = "http://localhost:3000/images";
+  const resourceAPI = "https://charming-bat-wig.cyclic.app/images";
   useEffect(() => {
     fetch(resourceAPI)
       .then((res) => res.json())
