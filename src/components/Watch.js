@@ -10,8 +10,8 @@ export default function Watch() {
   const [video, setVideo] = useState({});
   const [datas, setDatas] = useState([]);
 
-  const playingAPI = `https://json-server-vercel-taupe-two.vercel.app/videos/${videoId}`;
-  const resourceAPI = `https://json-server-vercel-taupe-two.vercel.app/videos`;
+  const playingAPI = `https://relax-zone-server.vercel.app/videos/${videoId}`;
+  const resourceAPI = `https://relax-zone-server.vercel.app/videos`;
 
   useEffect(() => {
     fetch(playingAPI)

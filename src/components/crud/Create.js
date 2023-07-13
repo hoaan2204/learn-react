@@ -14,7 +14,7 @@ export default function CreatePage() {
     e.preventDefault();
     const formData = { id, title, video_url };
 
-    fetch("https://json-server-vercel-taupe-two.vercel.app/videos", {
+    fetch("https://relax-zone-server.vercel.app/videos", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(formData),
