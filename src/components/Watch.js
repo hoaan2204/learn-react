@@ -10,7 +10,7 @@ export default function Watch() {
   const [video, setVideo] = useState({});
   const [datas, setDatas] = useState([]);
 
-  const playingAPI = `https://charming-bat-wig.cyclic.app/${videoId}`;
+  const playingAPI = `https://charming-bat-wig.cyclic.app/videos/${videoId}`;
   const resourceAPI = `https://charming-bat-wig.cyclic.app/videos`;
 
   useEffect(() => {
