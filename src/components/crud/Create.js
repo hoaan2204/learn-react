@@ -12,7 +12,7 @@ export default function CreatePage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { id, name, video_url };
+    const formData = { id, title, video_url };
 
     fetch("https://json-server-vercel-taupe-two.vercel.app/videos", {
       method: "POST",
