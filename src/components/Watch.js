@@ -1,28 +1,30 @@
-import { Container } from "./styles/Container.styled";
-import { Flex } from "./styles/Flex.styled";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import Player from "./Player";
 import VideoBar from "./VideoBar";
-import Description from "./Description";
 import CardVideo from "./CardVideo";
-import { useState, useEffect } from "react";
+import Description from "./Description";
+import { Container } from "./styles/Container.styled";
+import { Flex } from "./styles/Flex.styled";
 export default function Watch() {
   const [videoId, setVideoId] = useState(1);
   const [video, setVideo] = useState({});
   const [datas, setDatas] = useState([]);
 
-  const playingAPI = `https://relax-zone-server.vercel.app/videos/${videoId}`;
-  const resourceAPI = `https://relax-zone-server.vercel.app/videos`;
+  const playingAPI = `http://localhost:3000/videos/${videoId}`;
+  const resourceAPI = `http://localhost:3000/videos`;
 
   useEffect(() => {
-    fetch(playingAPI)
-      .then((res) => res.json())
-      .then((video) => setVideo(video));
+    axios.get(playingAPI).then((res) => {
+      setVideo(res.data);
+    });
   }, [videoId]);
 
   useEffect(() => {
-    fetch(resourceAPI)
-      .then((res) => res.json())
-      .then((datas) => setDatas(datas));
+    axios.get(resourceAPI).then((res) => {
+      setDatas(res.data);
+    });
   }, [resourceAPI]);
   return (
     <Container>

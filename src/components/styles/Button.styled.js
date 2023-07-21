@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  border-radius: 50px;
+  border-radius: 24px;
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -15,4 +15,8 @@ export const Button = styled.button`
     opacity: 0.9;
     transform: scale(0.98);
   }
+`;
+
+export const DeleteButton = styled(Button)`
+  background-color: red;
 `;

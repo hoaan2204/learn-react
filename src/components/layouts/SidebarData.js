@@ -20,28 +20,10 @@ export const SidebarData = [
   },
   {
     title: "CRUD",
-    path: "",
+    path: "/crud",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: "Create",
-        path: "/crud/create",
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: "Update",
-        path: "/crud/update",
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: "Delete",
-        path: "/crud/delete",
-        icon: <IoIcons.IoIosPaper />
-      },
-    ]
   },
   // {
   //   title: "About Us",

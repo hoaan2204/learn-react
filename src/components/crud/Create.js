@@ -1,52 +1,42 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { StyledForm, Form, Button } from "../styles/Form.styled";
 
 export default function CreatePage() {
-  const [id, setId] = useState();
   const [title, setTitle] = useState("");
   const [video_url, setVideoURL] = useState("");
 
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = { id, title, video_url };
-
-    fetch("https://relax-zone-server.vercel.app/videos", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => {
-        alert("Saved successfully.");
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+  const handleSubmit = () => {
+    axios.post(`http://localhost:3000/videos`, {
+      title,
+      video_url,
+    });
+    navigate("/crud");
   };
 
   return (
     <StyledForm>
-      <Form onSubmit={(e) => handleSubmit(e)}>
+      <Form>
         <h2>Create</h2>
-        <hr/>
+        <hr />
         <label>Video name</label>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-
         <label>Video URL</label>
         <input
           value={video_url}
           onChange={(e) => setVideoURL(e.target.value)}
           required
         />
-        <Button type="submit">Create</Button>
+        <Button type="submit" onClick={handleSubmit}>
+          Create
+        </Button>
       </Form>
     </StyledForm>
   );

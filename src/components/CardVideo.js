@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player";
 
-import { StyledCardVideo, StyledTitle } from "./styles/CardVideo.styled";
+import { StyledCardVideo } from "./styles/CardVideo.styled";
 
 export default function CardVideo({ children, data }) {
   return (
