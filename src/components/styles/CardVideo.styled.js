@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
-export const StyledCardVideo = styled.div`
-  position: relative;
-  width: 333px;
+export const StyledCardVideo = styled.a`
+  width: 100%;
   height: 100%;
-  margin: -12px 12px;
-  padding: 0 12px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 12px 1px rgb(255, 255, 255);
+  padding: 3px;
 
   h5 {
+    text-decoration: none;
     margin: 0;
-    padding: 6px 6px;
     font-size: 18px;
     color: #fff;
+  }
+
+  p {
+    color: #fff;
+    text-decoration: none;
   }
 
   &:hover {
@@ -21,11 +22,7 @@ export const StyledCardVideo = styled.div`
   }
 
   button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
+    padding: 12px;
+    opacity: 0.8;
   }
 `;

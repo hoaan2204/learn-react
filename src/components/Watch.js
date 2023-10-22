@@ -2,46 +2,54 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Player from "./Player";
-import VideoBar from "./VideoBar";
+import VideoGroup from "./VideoGroup";
 import CardVideo from "./CardVideo";
 import Description from "./Description";
 import { Container } from "./styles/Container.styled";
 import { Flex } from "./styles/Flex.styled";
 export default function Watch() {
-  const [videoId, setVideoId] = useState(1);
   const [video, setVideo] = useState({});
-  const [datas, setDatas] = useState([]);
+  const [currentVideoId, setCurrentVideoId] = useState("");
+  const [recommendVideos, setRecommendVideos] = useState([]);
 
-  const playingAPI = `http://localhost:3000/videos/${videoId}`;
-  const resourceAPI = `http://localhost:3000/videos`;
+  const recommendAPI = `http://localhost:3000/api/v1/videos`;
+  const currentPlayingAPI = `http://localhost:3000/api/v1/videos/${currentVideoId}`;
 
   useEffect(() => {
-    axios.get(playingAPI).then((res) => {
+    axios.get(currentPlayingAPI).then((res) => {
       setVideo(res.data);
     });
-  }, [videoId]);
+  }, [currentVideoId]);
 
   useEffect(() => {
-    axios.get(resourceAPI).then((res) => {
-      setDatas(res.data);
+    axios.get(recommendAPI).then((res) => {
+      setRecommendVideos(res.data);
+      firstVideo();
     });
-  }, [resourceAPI]);
+  }, []);
+
+  const firstVideo = () => {
+    setVideo(localStorage.getItem("video"));
+    console.log(localStorage.getItem("video"));
+  };
+
+  const handleChangeVideo = (recommendVideo) => {
+    setCurrentVideoId(recommendVideo._id);
+  };
   return (
     <Container>
       <Flex>
         <Player video={video} />
         <Description video={video} />
-        <VideoBar>
-          {datas.map((data, index) => (
-            <CardVideo
-              key={index}
-              data={data}
-              onClick={() => setVideoId(data.id)}
-            >
-              <button onClick={() => setVideoId(data.id)}>Click here</button>
+        <VideoGroup>
+          {recommendVideos.map((recommendVideo, index) => (
+            <CardVideo key={index} data={recommendVideo}>
+              <button onClick={() => handleChangeVideo(recommendVideo)}>
+                Click here
+              </button>
             </CardVideo>
           ))}
-        </VideoBar>
+        </VideoGroup>
       </Flex>
     </Container>
   );

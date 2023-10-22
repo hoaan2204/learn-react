@@ -9,14 +9,21 @@ export const SidebarData = [
     path: "/",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+  },
+  {
+    title: "Video",
+    path: "/video",
+    icon: <AiIcons.AiFillHome />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: "Gallery",
     path: "/gallery",
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />
+    iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: "CRUD",

@@ -1,10 +1,10 @@
 import Content from "../components/layouts/Content";
-import Home from "../components/Home";
+import Watch from "../components/Watch";
 
-export default function HomePage() {
+export default function VideoPage() {
   return (
     <Content>
-      <Home />
+      <Watch />
     </Content>
   );
 }

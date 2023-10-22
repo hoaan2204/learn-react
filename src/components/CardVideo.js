@@ -4,19 +4,19 @@ import { StyledCardVideo } from "./styles/CardVideo.styled";
 
 export default function CardVideo({ children, data }) {
   return (
-    <div>
       <StyledCardVideo>
       <ReactPlayer
-        url={data.video_url}
-        style={{padding: "6px"}}
+        url={data.videoURL}
+        style={{borderRadius: "12px"}}
         width="100%"
         height="80%"
+        preload="auto"
       />
       <h5>
         {data.title}
       </h5>
+      <p>{data.createdAt}</p>
       { children}
       </StyledCardVideo>
-    </div>
   );
 }

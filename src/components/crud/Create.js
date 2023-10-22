@@ -6,13 +6,15 @@ import { StyledForm, Form, Button } from "../styles/Form.styled";
 
 export default function CreatePage() {
   const [title, setTitle] = useState("");
-  const [video_url, setVideoURL] = useState("");
+  const [videoURL, setVideoURL] = useState("");
+  const [charId, setCharId] = useState("");
 
   const navigate = useNavigate();
   const handleSubmit = () => {
     axios.post(`http://localhost:3000/videos`, {
       title,
-      video_url,
+      videoURL,
+      charId
     });
     navigate("/crud");
   };
@@ -30,8 +32,14 @@ export default function CreatePage() {
         />
         <label>Video URL</label>
         <input
-          value={video_url}
+          value={videoURL}
           onChange={(e) => setVideoURL(e.target.value)}
+          required
+        />
+        <label>Char Id</label>
+        <input
+          value={charId}
+          onChange={(e) => setCharId(e.target.value)}
           required
         />
         <Button type="submit" onClick={handleSubmit}>

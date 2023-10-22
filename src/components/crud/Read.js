@@ -10,7 +10,7 @@ export default function List() {
   const [type, setType] = useState("videos");
   const [datas, setDatas] = useState([]);
 
-  const resourceAPI = `http://localhost:3000/${type}`;
+  const resourceAPI = `http://localhost:3000/api/v1/${type}`;
   useEffect(() => {
     axios.get(resourceAPI).then((response) => {
       setDatas(response.data);
@@ -18,10 +18,10 @@ export default function List() {
   }, [type]);
 
   const setData = (data) => {
-    let { id, title, video_url } = data;
-    localStorage.setItem("ID", id);
+    let { _id, title, videoURL } = data;
+    localStorage.setItem("ID", _id);
     localStorage.setItem("Title", title);
-    localStorage.setItem("Video URL", video_url);
+    localStorage.setItem("Video URL", videoURL);
   };
 
   const getData = () => {
@@ -35,7 +35,7 @@ export default function List() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/videos/${id}`).then(() => {
+    axios.delete(`http://localhost:3000/api/v1/videos/${id}`).then(() => {
       getData();
     });
   };
@@ -59,13 +59,13 @@ export default function List() {
           <th>Action</th>
         </tr>
         {datas.map((data) => (
-          <tr key={data.id}>
-            <td>{data.id}</td>
+          <tr key={data._id}>
+            <td>{data._id}</td>
             <td>{data.title}</td>
             {type === "videos" ? (
               <td>
                 <ReactPlayer
-                  url={data.video_url}
+                  url={data.videoURL}
                   style={{ padding: "6px" }}
                   width="60%"
                   controls
@@ -73,14 +73,14 @@ export default function List() {
               </td>
             ) : (
               <td>
-                <img width={420} src={data.image_url} />
+                <img width={420} src={data.imageURL} />
               </td>
             )}
             <td>
               <Link to="/crud/update">
                 <Button onClick={() => goToUpdatePage(data)}>Update</Button>
               </Link>
-              <DeleteButton onClick={() => handleDelete(data.id)}>
+              <DeleteButton onClick={() => handleDelete(data._id)}>
                 Delete
               </DeleteButton>
             </td>

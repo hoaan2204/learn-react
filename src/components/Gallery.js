@@ -5,7 +5,7 @@ import { Container } from "./styles/Container.styled";
 
 export default function Gallery() {
   const [datas, setDatas] = useState([]);
-  const resourceAPI = `http://localhost:3000/images`;
+  const resourceAPI = `http://localhost:3000/api/v1/images`;
 
   useEffect(() => {
     axios.get(resourceAPI).then((res) => {
